@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Team profile placeholder</title>
+  <desc id="desc">Leaf-inspired placeholder for an IWRC team profile photo.</desc>
+  <rect width="640" height="480" fill="#e6f3f2"/>
+  <circle cx="320" cy="172" r="76" fill="#94c7c3"/>
+  <path d="M160 430c20-95 84-148 160-148s140 53 160 148" fill="#17646a"/>
+  <g fill="#fff">
+    <circle cx="320" cy="126" r="34"/><circle cx="278" cy="151" r="30"/><circle cx="362" cy="151" r="30"/><circle cx="320" cy="184" r="28"/>
+  </g>
+  <text x="320" y="72" text-anchor="middle" fill="#102f3f" font-family="Arial, sans-serif" font-size="28" font-weight="700">IWRC Team</text>
+</svg>

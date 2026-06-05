@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="Protocol workflow illustration">
+  <rect width="1600" height="1000" fill="#e6f3f2"/>
+  <rect x="184" y="178" width="1232" height="644" rx="28" fill="#fff" stroke="#c9e2e0" stroke-width="4"/>
+  <g fill="#f6fbfb" stroke="#94c7c3" stroke-width="3">
+    <rect x="270" y="286" width="260" height="170" rx="18"/>
+    <rect x="670" y="286" width="260" height="170" rx="18"/>
+    <rect x="1070" y="286" width="260" height="170" rx="18"/>
+  </g>
+  <g fill="#102f3f">
+    <rect x="316" y="500" width="168" height="18" rx="9"/>
+    <rect x="710" y="500" width="180" height="18" rx="9"/>
+    <rect x="1118" y="500" width="164" height="18" rx="9"/>
+  </g>
+  <g fill="#3d8f8a">
+    <path d="M338 400c46-9 81-43 104-103 17 51 5 94-35 128-34 29-59 21-69-25Z"/>
+    <circle cx="800" cy="371" r="58"/>
+    <path d="M1154 402h102v-90h-102zm20-69h62v48h-62z"/>
+  </g>
+  <g stroke="#2f448f" stroke-width="7" fill="none" stroke-linecap="round">
+    <path d="M552 372h86"/>
+    <path d="m621 350 24 22-24 22"/>
+    <path d="M952 372h86"/>
+    <path d="m1021 350 24 22-24 22"/>
+  </g>
+</svg>
