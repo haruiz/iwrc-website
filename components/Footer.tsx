@@ -7,15 +7,7 @@ export function Footer() {
     <footer className="border-t border-cotton-200 bg-white">
       <div className="container-page grid gap-8 py-10 md:grid-cols-[1.2fr_1fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <IwrcLogo aria-hidden="true" className="h-11 w-11 shrink-0 shadow-sm" />
-            <div>
-              <p className="text-lg font-black leading-none text-cotton-900">{contact.shortName}</p>
-              <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-cotton-700">
-                Weed recognition
-              </p>
-            </div>
-          </div>
+          <IwrcLogo variant="wordmark" className="h-14 w-auto max-w-36 object-contain object-left" />
           <p className="mt-2 max-w-2xl text-sm leading-6 text-cotton-900/75">
             {siteProfile.valueProposition}
           </p>

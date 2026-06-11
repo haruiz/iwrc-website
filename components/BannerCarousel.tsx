@@ -13,19 +13,19 @@ type CarouselSlide = {
 
 const slides: CarouselSlide[] = [
   {
-    image: "/images/iwrc-weed-ai-field.png",
-    alt: "Weed science researcher using a tablet and field camera while AI overlays identify weed seedlings in crop rows",
-    label: "AI-assisted weed recognition"
+    image: "/images/iwrc-field-camera-team.webp",
+    alt: "Two researchers collecting plant images and field observations among flowering vegetation",
+    label: "Field data collection"
   },
   {
-    image: "/images/iwrc-weed-robotics.png",
-    alt: "Autonomous agricultural rover with cameras and sensors detecting weed seedlings between crop rows",
-    label: "Robotic field sensing"
+    image: "/images/iwrc-field-imaging-rig.webp",
+    alt: "Researcher operating an overhead camera rig above rows of potted plants",
+    label: "Plant imaging research"
   },
   {
-    image: "/images/iwrc-weed-drone.png",
-    alt: "Drone scanning a crop field with AI detection overlays highlighting weed plants",
-    label: "Drone-based crop imaging"
+    image: "/images/iwrc-field-boom-camera.webp",
+    alt: "Researchers positioning a boom-mounted camera over plants in an agricultural field",
+    label: "Field camera setup"
   }
 ];
 

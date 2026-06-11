@@ -16,17 +16,11 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-cotton-200/70 bg-white/90 shadow-sm backdrop-blur-xl">
       <nav className="container-page flex min-h-16 items-center justify-between gap-4" aria-label="Primary navigation">
-        <Link href="/" className="focus-ring group flex items-center gap-2.5 rounded-md font-semibold text-cotton-900">
+        <Link href="/" className="focus-ring group rounded-md">
           <IwrcLogo
-            aria-hidden="true"
-            className="h-10 w-10 shrink-0 drop-shadow-sm transition duration-200 group-hover:scale-105"
+            variant="wordmark"
+            className="h-12 w-auto max-w-28 object-contain object-left transition duration-200 group-hover:scale-105 sm:max-w-32"
           />
-          <span className="leading-none tracking-tight">
-            <span className="block text-base font-black">IWRC</span>
-            <span className="mt-0.5 hidden text-[0.63rem] font-semibold uppercase tracking-[0.18em] text-cotton-700 sm:block">
-              Weed recognition
-            </span>
-          </span>
         </Link>
         <button
           type="button"
