@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExternalLink } from "lucide-react";
+import { PublicDatasetSearch } from "@/components/PublicDatasetSearch";
 import { SectionHeader } from "@/components/SectionHeader";
 import { publicDatasets } from "@/content/datasets";
 
@@ -19,6 +20,7 @@ export default function PublicDatasetsPage() {
           title="Public weed and crop dataset index"
           description="The reference site organizes public weed and crop datasets cited in Weed-Datasets-Survey-2023. This page keeps those entries in a structured local content file for easier maintenance."
         />
+        <PublicDatasetSearch />
         <div className="mt-10 grid gap-8">
           {years.map((year) => (
             <section key={year} className="border-t border-cotton-200 pt-6">
