@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { AlertCircle, ExternalLink, Loader2, Search } from "lucide-react";
 
 type SearchResult = {
@@ -11,9 +12,8 @@ type SearchResult = {
   score?: number;
 };
 
-type SearchStatus = "idle" | "loading" | "success" | "error";
-
-const DEFAULT_SEARCH_API = "http://127.0.0.1:8011/semantic-search";
+const DEFAULT_SEARCH_API = "http://127.0.0.1:8001/semantic-search";
+const SEARCH_LIMIT = 6;
 
 function asRecord(value: unknown): Record<string, unknown> | null {
   return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : null;
@@ -133,30 +133,29 @@ function formatScore(score: number | undefined): string | null {
 
 export function PublicDatasetSearch() {
   const [query, setQuery] = useState("");
-  const [status, setStatus] = useState<SearchStatus>("idle");
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [submittedQuery, setSubmittedQuery] = useState("");
+
+  const searchQuery = useQuery({
+    queryKey: ["public-dataset-search", submittedQuery, SEARCH_LIMIT],
+    queryFn: () => requestSemanticSearch(submittedQuery, SEARCH_LIMIT),
+    enabled: submittedQuery.length > 0
+  });
 
   const trimmedQuery = query.trim();
-  const canSearch = trimmedQuery.length >= 3 && status !== "loading";
+  const canSearch = !searchQuery.isFetching;
+  const results = searchQuery.data ?? [];
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!canSearch) return;
+    if (!canSearch || !trimmedQuery) return;
 
-    setStatus("loading");
-    setError(null);
-
-    try {
-      const nextResults = await requestSemanticSearch(trimmedQuery, 6);
-      setResults(nextResults);
-      setStatus("success");
-    } catch (requestError) {
-      setResults([]);
-      setStatus("error");
-      setError(requestError instanceof Error ? requestError.message : "Search API request failed.");
+    if (trimmedQuery === submittedQuery) {
+      await searchQuery.refetch();
+      return;
     }
+
+    setSubmittedQuery(trimmedQuery);
   }
 
   return (
@@ -188,19 +187,19 @@ export function PublicDatasetSearch() {
           disabled={!canSearch}
           className="focus-ring inline-flex h-12 items-center justify-center gap-2 rounded-md bg-cotton-900 px-5 text-sm font-semibold text-white transition hover:bg-cotton-700 disabled:cursor-not-allowed disabled:bg-cotton-300"
         >
-          {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Search className="h-4 w-4" aria-hidden="true" />}
+          {searchQuery.isFetching ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Search className="h-4 w-4" aria-hidden="true" />}
           Search
         </button>
       </form>
 
-      {status === "error" ? (
+      {searchQuery.isError ? (
         <div className="mt-5 flex gap-3 rounded-md border border-soil-500/30 bg-white p-4 text-sm text-cotton-900">
           <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-soil-700" aria-hidden="true" />
-          <p>{error ?? "Search failed. Confirm the API is running and allows browser requests from this site."}</p>
+          <p>{searchQuery.error instanceof Error ? searchQuery.error.message : "Search failed. Confirm the API is running and allows browser requests from this site."}</p>
         </div>
       ) : null}
 
-      {status === "success" ? (
+      {searchQuery.isSuccess ? (
         <div className="mt-6">
           {results.length ? (
             <div className="grid gap-3">
